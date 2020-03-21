@@ -9,3 +9,4 @@ test:
 
 test-coverage:
 	pipenv run coverage run -m pytest
+	pipenv run coverage report
