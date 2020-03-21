@@ -14,15 +14,14 @@ def test_client(loop, app, sanic_client):
     return loop.run_until_complete(sanic_client(app))
 
 
-async def test_fixture_test_client_get(test_client):
+async def test_get_country_name(test_client):
     """
     GET request
     """
     resp = await test_client.get("/api/cases/country/name=spain")
     assert resp.status == status.OK
 
-    resp_json = await resp.json()
-    data = resp_json["data"]
+    data = await resp.json()
     assert type(data) is dict
     assert "country" in data
     assert "confirmed" in data
