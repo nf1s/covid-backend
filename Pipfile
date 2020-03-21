@@ -12,6 +12,8 @@ ipdb = "*"
 [packages]
 covid = "*"
 sanic = "*"
+schematics = "*"
+sanic-transmute = "*"
 
 [requires]
 python_version = "3.7"
