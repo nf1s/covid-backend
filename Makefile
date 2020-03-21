@@ -2,7 +2,7 @@ install:
 	pipenv install
 
 run:
-	pipenv run python main.py
+	pipenv run uvicorn main:app --reload
 
 test:
 	pipenv run pytest
