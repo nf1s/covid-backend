@@ -1,7 +1,5 @@
 
-from sanic import Blueprint
 from covid import Covid
-from sanic.response import json
 from schematics.models import Model
 from schematics.types import IntType
 from schematics.types import StringType
@@ -19,52 +17,54 @@ class CovidModel(Model):
     longitude = IntType()
     last_update = IntType()
     
-    
+
+class StatsModel(Model):
+    value = IntType()
 
 @describe(paths="/data", methods="GET")
-async def get_all(request):
+async def get_all(request) -> [CovidModel]:
     _covid = Covid()
     data = _covid.get_data()
-    return {"data": data}
+    return data
 
 
 @describe(paths="/country/name={name}/", methods="GET")
-async def get_status_by_name(request, name: str):
+async def get_status_by_name(request, name: str) -> CovidModel:
     _covid = Covid()
     data = _covid.get_status_by_country_name(name)
-    return {"data": data}
+    return data
 
 
 @describe(paths="/country/id={id}/", methods="GET")
-async def get_status_by_id(request, id):
+async def get_status_by_id(request, id) -> CovidModel:
     _covid = Covid()
     data = _covid.get_status_by_country_id(id)
-    return {"data": data}
+    return data
 
 
 @describe(paths="/active", methods="GET")
-async def get_active_cases(request):
+async def get_active_cases(request) -> StatsModel:
     _covid = Covid()
     data = _covid.get_total_active_cases()
-    return {"data": data}
+    return {"value": data}
 
 
 @describe(paths="/confirmed", methods="GET")
-async def get_confirmed_cases(request):
+async def get_confirmed_cases(request) -> StatsModel:
     _covid = Covid()
     data = _covid.get_total_confirmed_cases()
-    return {"data": data}
+    return {"value": data}
 
 
 @describe(paths="/recovered", methods="GET")
-async def get_recovered_cases(request):
+async def get_recovered_cases(request) -> StatsModel:
     _covid = Covid()
     data = _covid.get_total_recovered()
-    return {"data": data}
+    return {"value": data}
 
 
 @describe(paths="/deaths", methods="GET")
-async def get_deaths(request):
+async def get_deaths(request) -> StatsModel:
     _covid = Covid()
     data = _covid.get_total_deaths()
-    return {"data": data}
+    return {"value": data}
