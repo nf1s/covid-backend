@@ -5,9 +5,15 @@ verify_ssl = true
 
 [dev-packages]
 flake8 = "*"
+pytest = "*"
+pytest-sanic = "*"
+ipdb = "*"
 
 [packages]
 covid = "*"
+sanic = "*"
+schematics = "*"
+sanic-transmute = "*"
 
 [requires]
 python_version = "3.7"
