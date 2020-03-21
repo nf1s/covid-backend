@@ -21,10 +21,22 @@ class CovidModel(Model):
 class StatsModel(Model):
     value = IntType()
 
+
+class CountryModel(Model):
+    id = IntType()
+    name = StringType()
+
+
 @describe(paths="/data", methods="GET")
 async def get_all(request) -> [CovidModel]:
     _covid = Covid()
     data = _covid.get_data()
+    return data
+
+@describe(paths="/list-countries", methods="GET")
+async def list_countries(request) -> [CountryModel]:
+    _covid = Covid()
+    data = _covid.list_countries()
     return data
 
 
