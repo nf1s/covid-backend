@@ -33,6 +33,7 @@ async def get_all(request) -> [CovidModel]:
     data = _covid.get_data()
     return data
 
+
 @describe(paths="/list-countries", methods="GET")
 async def list_countries(request) -> [CountryModel]:
     _covid = Covid()
