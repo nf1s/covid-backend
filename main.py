@@ -49,7 +49,7 @@ async def get_recovered_cases(request):
 
 
 @app.route("/deaths")
-async def get_active_cases(request):
+async def get_deaths(request):
     _covid = Covid()
     data = _covid.get_total_deaths()
     return json({"cases": data})
