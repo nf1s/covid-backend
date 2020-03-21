@@ -9,6 +9,7 @@ pytest = "*"
 pytest-sanic = "*"
 coverage = "*"
 ipdb = "*"
+faker = "*"
 
 [packages]
 covid = "*"
