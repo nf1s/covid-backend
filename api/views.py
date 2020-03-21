@@ -21,6 +21,7 @@ class CovidModel(Model):
 class StatsModel(Model):
     value = IntType()
 
+
 @describe(paths="/data", methods="GET")
 async def get_all(request) -> [CovidModel]:
     _covid = Covid()
