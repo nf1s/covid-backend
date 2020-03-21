@@ -24,7 +24,8 @@ async def get_status_by_name(request, name):
 async def get_status_by_id(request, id):
     _covid = Covid()
     data = _covid.get_status_by_country_id(id)
-    return json({data["country"].title(): data})
+    country_name = data["country"].lower()
+    return json({country_name: data})
 
 
 @app.route("/active")
@@ -56,4 +57,4 @@ async def get_deaths(request):
 
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=8000)
+    app.run(host="0.0.0.0", port=8000, auto_reload=True)
