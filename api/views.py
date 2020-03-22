@@ -4,9 +4,9 @@ from .models import CovidModel, CountryModel, StatsModel
 from api import controller
 
 
-@describe(paths="/data", methods="GET")
+@describe(paths="/all", methods="GET")
 async def get_all(request) -> [CovidModel]:
-    data = await controller.get_data()
+    data = await controller.get_all()
     return data
 
 
@@ -30,23 +30,23 @@ async def get_status_by_country_id(request, id: int) -> CovidModel:
 
 @describe(paths="/active", methods="GET")
 async def get_active_cases(request) -> StatsModel:
-    data = await controller.get_total_active_cases()
-    return {"value": data}
+    data = await controller.get_active_cases()
+    return data
 
 
 @describe(paths="/confirmed", methods="GET")
 async def get_confirmed_cases(request) -> StatsModel:
-    data = await controller.get_total_confirmed_cases()
-    return {"value": data}
+    data = await controller.get_confirmed_cases()
+    return data
 
 
 @describe(paths="/recovered", methods="GET")
 async def get_recovered_cases(request) -> StatsModel:
-    data = await controller.get_total_recovered()
-    return {"value": data}
+    data = await controller.get_recovered_cases()
+    return data
 
 
 @describe(paths="/deaths", methods="GET")
 async def get_deaths(request) -> StatsModel:
-    data = await controller.get_total_deaths()
-    return {"value": data}
+    data = await controller.get_deaths()
+    return data

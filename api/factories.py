@@ -20,14 +20,13 @@ class CovidModelFactory:
         return asdict(self)
 
 
-@dataclass
 class CovidListFactory:
     data = [CovidModelFactory().to_dict() for num in range(1, 10)]
 
 
 @dataclass
 class StatsModelFactory:
-    value = fake.pyint(min_value=0, max_value=9999, step=1)
+    value: int = fake.pyint(min_value=0, max_value=9999, step=1)
 
     def to_dict(self):
         return asdict(self)
@@ -35,8 +34,12 @@ class StatsModelFactory:
 
 @dataclass
 class CountryModelFactory:
-    id = fake.pyint(min_value=0, max_value=9999, step=1)
-    name = fake.country()
+    id: int = fake.pyint(min_value=0, max_value=9999, step=1)
+    name: str = fake.country()
 
     def to_dict(self):
         return asdict(self)
+
+
+class CountryListFactory:
+    data = [CountryModelFactory().to_dict() for num in range(1, 10)]

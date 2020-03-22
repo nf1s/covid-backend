@@ -10,6 +10,7 @@ pytest-sanic = "*"
 coverage = "*"
 ipdb = "*"
 faker = "*"
+pytest-asyncio = "*"
 
 [packages]
 covid = "*"
