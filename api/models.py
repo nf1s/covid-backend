@@ -1,6 +1,7 @@
 from schematics.models import Model
 from schematics.types import IntType
 from schematics.types import StringType
+from schematics.types import NumberType
 
 
 class CovidModel(Model):
@@ -10,8 +11,8 @@ class CovidModel(Model):
     active = IntType()
     deaths = IntType()
     recovered = IntType()
-    latitude = IntType()
-    longitude = IntType()
+    latitude = NumberType()
+    longitude = NumberType()
     last_update = IntType()
 
 
